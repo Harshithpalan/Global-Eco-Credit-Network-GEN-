@@ -1,0 +1,92 @@
+@import "tailwindcss";
+
+@theme {
+  --color-primary-emerald: #0fb288;
+  --color-secondary-azure: #0ea5e9;
+  --color-bg-dark: #020617;
+  --color-bg-card: rgba(15, 23, 42, 0.75);
+  --color-glass-border: rgba(255, 255, 255, 0.08);
+
+  --font-sans: 'Outfit', ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, "Noto Sans", sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
+}
+
+@layer base {
+  body {
+    @apply bg-bg-dark text-slate-50 antialiased overflow-x-hidden;
+  }
+}
+
+@layer components {
+  .glass {
+    @apply bg-white/5 backdrop-blur-xl border border-glass-border;
+  }
+
+  .glass-card {
+    @apply bg-bg-card backdrop-blur-xl border border-glass-border shadow-2xl transition-all duration-300 rounded-3xl;
+  }
+
+  .glass-card:hover {
+    @apply border-primary-emerald/30 shadow-emerald-500/10 -translate-y-1;
+  }
+
+  .glow-text-emerald {
+    text-shadow: 0 0 12px rgba(15, 178, 136, 0.4);
+  }
+
+  .glow-text-azure {
+    text-shadow: 0 0 12px rgba(14, 165, 233, 0.4);
+  }
+
+  .pulse-emerald {
+    animation: pulse-emerald 2s cubic-bezier(0.4, 0, 0.6, 1) infinite;
+  }
+}
+
+@keyframes float {
+
+  0%,
+  100% {
+    transform: translateY(0);
+  }
+
+  50% {
+    transform: translateY(-10px);
+  }
+}
+
+.animate-float {
+  animation: float 4s ease-in-out infinite;
+}
+
+@keyframes pulse-emerald {
+
+  0%,
+  100% {
+    box-shadow: 0 0 0 0 rgba(15, 178, 136, 0.4);
+  }
+
+  50% {
+    box-shadow: 0 0 0 12px rgba(15, 178, 136, 0);
+  }
+}
+
+/* Custom Scrollbar */
+::-webkit-scrollbar {
+  width: 5px;
+}
+
+::-webkit-scrollbar-track {
+  @apply bg-bg-dark;
+}
+
+::-webkit-scrollbar-thumb {
+  @apply bg-slate-800 rounded-full hover:bg-primary-emerald transition-colors;
+}
+
+/* Base Headings */
+h1,
+h2,
+h3,
+h4 {
+  @apply tracking-tight;
+}
